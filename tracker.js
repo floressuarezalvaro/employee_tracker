@@ -14,4 +14,3 @@ connection.connect((err) => {
     console.log(`You are connected. ID = ${connection.threadId}\n`);
     connection.end();
 });
-  
