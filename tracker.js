@@ -7,4 +7,11 @@ const connection = mysql.createConnection({
     user: 'root',
     password: 'password',
     database: 'employeeTracker_db'
-})
+});
+
+connection.connect((err) => {
+    if (err) throw err;
+    console.log(`You are connected. ID = ${connection.threadId}\n`);
+    connection.end();
+});
+  
