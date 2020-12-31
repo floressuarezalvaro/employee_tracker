@@ -22,9 +22,9 @@ const startPrompt = () => {
         type: 'list',
         message: 'Which of these choices would you like to accomplish?',
         choices: [
-            'View All Employees',
-            'View All Employees by Manager',
-            'View All Roles',
+            'View Employees',
+            // 'View Employees by Manager',
+            'View Roles',
             'View Departments',
             'Add Employee',
             'Add Role',
@@ -39,7 +39,7 @@ const startPrompt = () => {
             case 'View Employees':
                 viewEmps();
                 break;
-            // case 'View All Employees by Manager':
+            // case 'View Employees by Manager':
             //     viewEmpsByManager();
             //     break;
             case 'View Roles':
@@ -49,16 +49,16 @@ const startPrompt = () => {
                 viewDeps();
                 break;
             case 'Add Employee':
-                addEmps();
+                addEmp();
                 break;
             case 'Add Role':
                 addRole();
                 break;
             case 'Add Department':
-                addDeps();
+                addDep();
                 break;
             case 'Update Employee role':
-                updateRoles();
+                updateRole();
                 break;
             case 'Update Employee Manager':
                 updateEmpManager();
@@ -81,6 +81,7 @@ const viewEmps = () => {
     query += "INNER JOIN department ON (department.id = role.department_id)";
     connection.query(query, (err, res) => {
         if (err) throw err;
+        console.log("<---------------------------------------------->")
         console.table(res)
         console.log("<---------------------------------------------->")
         startPrompt();
@@ -94,6 +95,7 @@ const viewEmps = () => {
 const viewRoles = () => {
     connection.query('SELECT * from role', (err, res) => {
         if (err) throw err;
+        console.log("<---------------------------------------------->")
         console.table(res)
         console.log("<---------------------------------------------->")
         startPrompt();
@@ -103,22 +105,116 @@ const viewRoles = () => {
 const viewDeps = () => {
     connection.query('SELECT * from department', (err, res) => {
         if (err) throw err;
+        console.log("<---------------------------------------------->")
         console.table(res)
         console.log("<---------------------------------------------->")
         startPrompt();
     })
 }
 
-const addEmps = () => {
-    console.log("You selected: addEmps")
+const addEmp = () => {
+    inquirer
+        .prompt([
+            {
+                name: 'fName',
+                type: 'input',
+                message: "What is the employee's first name",
+            },
+            {
+                name: 'lName',
+                type: 'input',
+                message: "What is the employee's last name",
+            },
+            {
+                name: 'role',
+                type: 'input',
+                message: "What is the employee's role",
+            },
+            {
+                name: 'mId',
+                type: 'input',
+                message: "What is the employee's manager ID number",
+            }
+        ])
+        .then((answer) => {
+            connection.query(
+            "INSERT INTO employee SET ?", 
+            {
+                first_name: answer.fName, 
+                last_name: answer.lName, 
+                role_id: answer.role, 
+                manager_id: answer.mId
+            },
+            (err) => {
+                if (err) throw err;
+                console.log("<---------------------------------------------->")
+                console.log("Employee successfully added")
+                console.log("<---------------------------------------------->")
+                startPrompt();
+            })
+        });
+};
+
+const addRole = () => {
+    inquirer
+        .prompt([
+            {
+                name: 'newRole',
+                type: 'input',
+                message: "What role would you like to add?",
+            },
+            {
+                name: 'newRoleSalary',
+                type: 'input',
+                message: "What will be the salary for this role?",
+            },
+            {
+                name: 'newRoleDep',
+                type: 'input',
+                message: "What department ID does this role belong to?",
+            }
+        ])
+        .then((answer) => {
+            connection.query(
+            "INSERT INTO role SET ?", 
+            {
+                title: answer.newRole, 
+                salary: answer.newRoleSalary, 
+                department_id: answer.newRoleDep
+            },
+            (err) => {
+                if (err) throw err;
+                console.log("<---------------------------------------------->")
+                console.log("Role successfully added")
+                console.log("<---------------------------------------------->")
+                startPrompt();
+            })
+        });
 }
 
-const addRoles = () => {
-    console.log("You selected: addRoles")
-}
-
-const addDeps = () => {
-    console.log("You selected: Add Department")
+const addDep = () => {
+    inquirer
+        .prompt([
+            {
+                name: 'newDep',
+                type: 'input',
+                message: "What department would you like to add?",
+            },
+        ])
+        .then((answer) => {
+            connection.query(
+            "INSERT INTO department SET ?", 
+            {
+                name: answer.newDep
+            },
+            (err) => {
+                if (err) throw err;
+                console.log("<---------------------------------------------->")
+                console.log("Department successfully added")
+                console.log("<---------------------------------------------->")
+                startPrompt();
+            })
+        });
 }
 
 const updateRole = () => {
