@@ -1,5 +1,6 @@
 const mysql = require('mysql');
 const inquirer = require('inquirer');
+const cTable = require('console.table');
 
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -82,11 +83,21 @@ const viewEmpsByManager = () => {
 }
 
 const viewRoles = () => {
-    console.log("You selected: View All Roles")
-}
+    connection.query('SELECT * from role', (err, res) => {
+        if (err) throw err;
+        console.table(res)
+        console.log("<---------------------------------------------->")
+        startPrompt();
+    })
+};
 
 const viewDeps = () => {
-    console.log("You selected: viewDeps")
+    connection.query('SELECT * from department', (err, res) => {
+        if (err) throw err;
+        console.table(res)
+        console.log("<---------------------------------------------->")
+        startPrompt();
+    })
 }
 
 const addEmps = () => {
