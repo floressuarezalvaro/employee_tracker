@@ -75,7 +75,16 @@ const startPrompt = () => {
 }
 
 const viewEmps = () => {
-    console.log("You selected: View All Emps")
+    let query = "SELECT emp.id, emp.first_name AS 'First Name', emp.last_name AS 'Last Name', mgr.first_name AS 'Manager First Name', role.title AS 'Role Title', department.name AS 'Department Name' FROM employee emp ";
+    query += "LEFT JOIN employee mgr ON (emp.manager_id = mgr.id) "
+    query += "INNER JOIN role ON (emp.role_id = role.id) ";
+    query += "INNER JOIN department ON (department.id = role.department_id)";
+    connection.query(query, (err, res) => {
+        if (err) throw err;
+        console.table(res)
+        console.log("<---------------------------------------------->")
+        startPrompt();
+    })
 }
 
 const viewEmpsByManager = () => {
