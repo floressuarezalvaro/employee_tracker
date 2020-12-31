@@ -36,13 +36,13 @@ const startPrompt = () => {
     })
     .then((answer) => {
         switch (answer.actions) {
-            case 'View All Employees':
+            case 'View Employees':
                 viewEmps();
                 break;
-            case 'View All Employees by Manager':
-                viewEmpsByManager();
-                break;
-            case 'View All Roles':
+            // case 'View All Employees by Manager':
+            //     viewEmpsByManager();
+            //     break;
+            case 'View Roles':
                 viewRoles();
                 break;
             case 'View Departments':
@@ -87,9 +87,9 @@ const viewEmps = () => {
     })
 }
 
-const viewEmpsByManager = () => {
-    console.log("You selected: View All Employees by Manager")
-}
+// const viewEmpsByManager = () => {
+//     console.log("You selected: View All Employees by Manager")
+// }
 
 const viewRoles = () => {
     connection.query('SELECT * from role', (err, res) => {
