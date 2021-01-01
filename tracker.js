@@ -148,7 +148,7 @@ const addEmp = () => {
             (err) => {
                 if (err) throw err;
                 console.log("<---------------------------------------------->")
-                console.log("Employee successfully added")
+                console.log("Employee was successfully added")
                 console.log("<---------------------------------------------->")
                 startPrompt();
             })
