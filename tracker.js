@@ -30,7 +30,7 @@ const startPrompt = () => {
             'Add Role',
             'Add Department',
             'Update Employee role',
-            // 'Update Employee Manager',
+            'Update Employee Manager',
             'Exit'
         ],
     })
@@ -60,9 +60,9 @@ const startPrompt = () => {
             case 'Update Employee role':
                 updateRole();
                 break;
-            // case 'Update Employee Manager':
-            //     updateEmpManager();
-            //     break;
+            case 'Update Employee Manager':
+                updateEmpManager();
+                break;
             case 'Exit':
                 connection.end();
                 break;
@@ -250,6 +250,35 @@ const updateRole = () => {
         });
 }
 
-// const updateEmpManager= () => {
-//     console.log("You selected: updateEmpManager")
-// }
+const updateEmpManager= () => {
+    inquirer
+        .prompt([
+            {
+                name: 'updateEmp',
+                type: 'input',
+                message: "What is the employee ID you'd like to update?",
+            },
+            {
+                name: 'updateManager',
+                type: 'input',
+                message: "What employee ID of the manager you'd like assigned to this user?",
+            },
+        ])
+        .then((answer) => {
+            connection.query(
+            "UPDATE employee SET ? WHERE ?", 
+            [{
+                manager_id: answer.updateManager
+            },
+            {
+                id: answer.updateEmp
+            }],
+            (err) => {
+                if (err) throw err;
+                console.log("<---------------------------------------------->")
+                console.log("Employee manager successfully updated")
+                console.log("<---------------------------------------------->")
+                startPrompt();
+            })
+        });
+}
