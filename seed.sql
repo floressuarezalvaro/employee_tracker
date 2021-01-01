@@ -13,3 +13,6 @@ SELECT emp.id, emp.first_name AS 'First Name', emp.last_name AS 'Last Name', mgr
 LEFT JOIN employee mgr ON emp.manager_id = mgr.id
 INNER JOIN role ON (emp.role_id = role.id)
 INNER JOIN department ON (department.id = role.department_id)
+
+UPDATE employee SET role_id = '2'
+WHERE id = '2'
