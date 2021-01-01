@@ -185,7 +185,7 @@ const addRole = () => {
             (err) => {
                 if (err) throw err;
                 console.log("<---------------------------------------------->")
-                console.log("Role successfully added")
+                console.log("Role successfully added!")
                 console.log("<---------------------------------------------->")
                 startPrompt();
             })
@@ -210,7 +210,7 @@ const addDep = () => {
             (err) => {
                 if (err) throw err;
                 console.log("<---------------------------------------------->")
-                console.log("Department successfully added")
+                console.log("Department successfully added!")
                 console.log("<---------------------------------------------->")
                 startPrompt();
             })
@@ -243,7 +243,7 @@ const updateRole = () => {
             (err) => {
                 if (err) throw err;
                 console.log("<---------------------------------------------->")
-                console.log("Role successfully updated")
+                console.log("Role successfully updated!")
                 console.log("<---------------------------------------------->")
                 startPrompt();
             })
@@ -276,7 +276,7 @@ const updateEmpManager= () => {
             (err) => {
                 if (err) throw err;
                 console.log("<---------------------------------------------->")
-                console.log("Employee manager successfully updated")
+                console.log("Employee manager successfully updated!")
                 console.log("<---------------------------------------------->")
                 startPrompt();
             })
