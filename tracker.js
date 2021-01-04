@@ -2,6 +2,9 @@ const mysql = require('mysql');
 const inquirer = require('inquirer');
 const cTable = require('console.table');
 
+const app = express();
+const PORT = process.env.PORT || 8080;
+
 const connection = mysql.createConnection({
     host: 'localhost',
     port: 3306,
@@ -282,3 +285,7 @@ const updateEmpManager= () => {
             })
         });
 }
+
+app.listen(PORT, () =>
+    console.log(`Server listening on: http://localhost:${PORT}`)
+);
