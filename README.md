@@ -3,7 +3,7 @@
 # Team Tracker
 
 ## Description:
-This repository provides the landing page for my team tracker. This CLI will prompt the user with options to view, add, or remove team members. 
+This repository provides the landing page for my team tracker. Through this CLI you will be able to view and manage the departments, roles, and employees in my company.
 
 Please click the link here to access my [repository](https://github.com/floressuarezalvaro/employee_tracker). Below is a video of how my team generator works. Due to the length of my gif, I was not able to make the dimensions larger so I have included a screenshot of an example below it. 
 

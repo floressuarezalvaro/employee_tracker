@@ -24,7 +24,6 @@ const startPrompt = () => {
         message: 'Which of these choices would you like to accomplish?',
         choices: [
             'View Employees',
-            // 'View Employees by Manager',
             'View Roles',
             'View Departments',
             'Add Employee',
@@ -40,9 +39,6 @@ const startPrompt = () => {
             case 'View Employees':
                 viewEmps();
                 break;
-            // case 'View Employees by Manager':
-            //     viewEmpsByManager();
-            //     break;
             case 'View Roles':
                 viewRoles();
                 break;
@@ -88,10 +84,6 @@ const viewEmps = () => {
         startPrompt();
     })
 }
-
-// const viewEmpsByManager = () => {
-//     console.log("You selected: View All Employees by Manager")
-// }
 
 const viewRoles = () => {
     connection.query('SELECT * from role', (err, res) => {
