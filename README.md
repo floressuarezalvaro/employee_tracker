@@ -5,10 +5,33 @@
 ## Description:
 This repository provides the landing page for my team tracker. Through this CLI you will be able to view and manage the departments, roles, and employees in my company.
 
-Please click the link here to access my [repository](https://github.com/floressuarezalvaro/employee_tracker). Below is a video of how my team generator works. Due to the length of my gif, I was not able to make the dimensions larger so I have included a screenshot of an example below it. 
+Please click the link here to access my [repository](https://github.com/floressuarezalvaro/employee_tracker). Below is a video of how my team generator works. Due to the length of my gif, I was not able to make the dimensions larger so I have included screenshots of each section below.
 
-!(./Assets/.gif)
-![Team Generator Pic](./Assets/.png)
+## Employee Tracker Video:
+
+![Employee Tracker Gif](./Assets/employeeTracker.gif)
+
+## View Employees:
+![View Employees](./Assets/viewEmployees.png)
+
+## View Roles:
+![View Roles](./Assets/viewRoles.png)
+
+## View Department:
+![View Department](./Assets/viewDepartment.png)
+
+## Add and then view employee:
+![Add Employees](./Assets/addEmployee.png)
+
+## Add and then view roles:
+![Add Roles](./Assets/addRole.png)
+
+## Add and then view department:
+![Add Department](./Assets/addDepartment.png)
+
+## Update employee role and then view employees:
+![Update Employee](./Assets/updateEmployeeRole.png)
+
 
 ## Installation:
 To install the dependencies, please run the following command:
